@@ -2,13 +2,13 @@
   "name": "es6-check-ths",
   "version": "1.2.1",
   "description": "scan code contains es6",
-  "main": "index.js",
+  "main": "./build/index.js",
   "bin": {
     "es6-check": "./bin/es6-check"
   },
   "preferGlobal": true,
   "scripts": {
-    "es6-check": "npx ts-node ./src/index.ts"
+    "es6-check": "node ./build/index.js"
   },
   "author": "gongshaoxu@myhexin.com",
   "license": "ISC",
