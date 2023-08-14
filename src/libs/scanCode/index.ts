@@ -12,9 +12,11 @@ function scanCode(code) {
   // 通过estraverse遍历AST语法树
   estraverse.traverse(syntaxTree, {
     enter: (node) => {
-      hasES6 = scanConfig(node)
-      hasES6 && estraverse.VisitorOption.Break
-      return hasES6
+      // 遍历每个语法树节点，如果出现ES6语法，标记为true
+      if (scanConfig(node)){
+        hasES6 = true
+        return estraverse.VisitorOption.Break
+      }
     }
   })
 

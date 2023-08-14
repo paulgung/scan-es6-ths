@@ -392,7 +392,7 @@ const checkES6:Function[] = [
   checkDecoratorSyntax
 ]
 
-function scanConfig(node){
+function scanConfig(node):boolean{
   return checkES6.some(func => func(node))
 }
 

@@ -26,7 +26,7 @@ function main(): void {
 try {
   main()
 } catch (error) {
-  console.error('An error occurred:', error)
+  console.error('An error occurred in es6-check plugin:', error)
 }
 
 

@@ -26,10 +26,9 @@ function scanFolder(folderPath) {
       scanFolder(filePath)
     } else if (stats.isFile() && file.endsWith('.js')) {
       try {
-        // 读代码
-        const code = fs.readFileSync(filePath, 'utf-8')
-        console.log("弓少旭想看看code",code)
         // 扫描单文件代码
+        const code = fs.readFileSync(filePath, 'utf-8')
+        // ES6特性检查
         const hasES6 = scanCode(code)
         if (hasES6) {
           console.log(`文件 ${filePath} 中包含 ES6 语法`)
