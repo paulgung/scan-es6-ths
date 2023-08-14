@@ -8,7 +8,7 @@ function main(): void {
   // 获取命令行参数
   const argv = minimist(process.argv.slice(2))
   // 获取目录路径
-  const cwd = process.cwd()
+  const cwd:string = process.cwd()
 
   // 用户输入-h或-help时
   if (argv.h || argv.help) {
@@ -17,7 +17,7 @@ function main(): void {
     // 获取相对路径
     const relativePath = argv.p || argv.path || 'dist'
     // 拼接绝对路径
-    const folderPath = path.join(cwd, relativePath)
+    const folderPath:string = path.join(cwd, relativePath)
     // 运行主方法
     scanFolder(folderPath)
   }

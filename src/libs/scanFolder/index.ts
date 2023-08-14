@@ -3,7 +3,7 @@ import * as path from 'path'
 import scanCode from '../scanCode'
 
 // 扫描文件夹中的所有 JavaScript 文件并检查是否包含 ES6 语法
-function scanFolder(folderPath) {
+function scanFolder(folderPath):void {
 
   // 鲁棒性检查，处理dist文件夹不存在的情况
   let files = null
@@ -18,8 +18,8 @@ function scanFolder(folderPath) {
 
   // 遍历读到的文件/文件夹
   for (const file of files) {
-    const filePath = path.join(folderPath, file)
-    const stats = fs.statSync(filePath)
+    const filePath:string = path.join(folderPath, file)
+    const stats:fs.Stats = fs.statSync(filePath)
 
     if (stats.isDirectory()) {
       // 递归扫描子文件夹
@@ -27,9 +27,9 @@ function scanFolder(folderPath) {
     } else if (stats.isFile() && file.endsWith('.js')) {
       try {
         // 扫描单文件代码
-        const code = fs.readFileSync(filePath, 'utf-8')
+        const code:string = fs.readFileSync(filePath, 'utf-8')
         // ES6特性检查
-        const hasES6 = scanCode(code)
+        const hasES6:boolean = scanCode(code)
         if (hasES6) {
           console.log(`文件 ${filePath} 中包含 ES6 语法`)
         } else {
