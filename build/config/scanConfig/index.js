@@ -155,7 +155,7 @@ function checkStaticClassMethod(node) {
     }
 }
 function checkPromiseAllSettled(node) {
-    // 检查Promise.allSettled(node)
+    // 检查Promise.allSettled(node):boolean
     if (node.type === 'CallExpression' &&
         node.callee &&
         node.callee.property &&
@@ -164,7 +164,7 @@ function checkPromiseAllSettled(node) {
     }
 }
 function checkArrayFlatAndFlatMap(node) {
-    // 检查数组的 flat(node)、flatMap(node) 方法
+    // 检查数组的 flat(node):boolean、flatMap(node):boolean 方法
     if (node.type === 'CallExpression' &&
         node.callee && // 确保 callee 属性存在
         node.callee.property && // 确保 property 属性存在
