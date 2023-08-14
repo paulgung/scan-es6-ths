@@ -2,11 +2,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 function index() {
     console.log(`
-  Usage: es6-check [options]
+  使用方法: es6-check [options]
 
   Options:
-  -h, --help     Show help message
-  -p, --path     Specify the directory to check (default: dist)
+  -h, --help     显示帮助信息
+  -p, --path     指定扫描目录 (默认目录: dist)
   `);
 }
 exports.default = index;
