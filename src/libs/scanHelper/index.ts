@@ -4,7 +4,7 @@ function index() {
 
   Options:
   -h, --help     显示帮助信息
-  -p, --path     指定ES6扫描目录 (默认目录: dist)
+  -p, --path     指定扫描目录 (默认目录: dist)
   `)
 }
 
