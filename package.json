@@ -10,7 +10,7 @@
   "scripts": {
     "es6-check": "node ./build/index.js"
   },
-  "author": "gongshaoxu@myhexin.com",
+  "author": "gongshaoxu <gongshaoxu@myhexin.com>",
   "license": "ISC",
   "dependencies": {
     "acorn": "^8.10.0",
