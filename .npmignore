@@ -1,14 +1,5 @@
-# 忽略 dist 目录
+src/
 dist/
-
-# 忽略 README.md 文件
-README.md
-
-# 忽略所有 .log 文件和 node_modules 目录
-*.log
 node_modules/
-
-# 忽略某个目录下的所有文件
-path/to/folder/*
-
-.gitignore
+.idea/
+tsconfig.json
