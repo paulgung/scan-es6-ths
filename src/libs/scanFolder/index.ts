@@ -35,7 +35,6 @@ function scanFolder(folderPath):void {
         } else {
           console.log(`文件 ${filePath} 不包含 ES6 语法`)
         }
-        // return hasES6
       } catch (error) {
         console.error(`读取文件 ${filePath} 失败：${error}`)
       }

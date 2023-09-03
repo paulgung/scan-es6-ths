@@ -1,61 +1,61 @@
+// 检查常量声明（const）
 function checkConstDeclaration(node):boolean{
-  // 检查常量声明（const）
   if (node.type === 'VariableDeclaration' && node.kind === 'const') {
     return true
   }
 }
 
+// 检查块级作用域变量声明（let）
 function checkLetDeclaration(node):boolean {
-  // 检查块级作用域变量声明（let）
   if (node.type === 'VariableDeclaration' && node.kind === 'let') {
     return true
   }
 }
 
+// 检查箭头函数
 function checkArrowFunction(node):boolean {
-  // 检查箭头函数
   if (node.type === 'ArrowFunctionExpression') {
     return true
   }
 }
 
+// 检查模板字面量
 function checkTemplateLiteral(node):boolean {
-  // 检查模板字面量
   if (node.type === 'TemplateLiteral') {
     return true
   }
 }
 
+// 检查解构赋值（数组和对象）
 function checkDestructuringAssignment(node):boolean {
-  // 检查解构赋值（数组和对象）
   if (node.type === 'ArrayPattern' || node.type === 'ObjectPattern') {
     return true
   }
 }
 
+// 检查函数默认参数
 function checkDefaultParameters(node):boolean {
-  // 检查函数默认参数
   if (node.type === 'AssignmentPattern') {
     return true
   }
 }
 
+// 检查展开语法（Spread）
 function checkSpreadSyntax(node):boolean {
-  // 检查展开语法（Spread）
   if (node.type === 'SpreadElement') {
     return true
   }
 }
 
+// 检查迭代器（Iterator）
 function checkIterator(node):boolean {
-  // 检查迭代器（Iterator）
   if (node.type === 'ForOfStatement') {
     return true
   }
 }
 
+// 检查 Promise 对象
 function checkPromise(node):boolean {
-  // 检查 Promise 对象
   if (node.type === 'NewExpression' &&
     node.callee &&
     node.callee.name === 'Promise') {
@@ -63,15 +63,15 @@ function checkPromise(node):boolean {
   }
 }
 
+// 检查类定义
 function checkClassDeclaration(node):boolean {
-  // 检查类定义
   if (node.type === 'ClassDeclaration') {
     return true
   }
 }
 
+// 检查模块化语法（import 和 export）
 function checkModuleSyntax(node):boolean {
-  // 检查模块化语法（import 和 export）
   if (
     node.type === 'ImportDeclaration' ||
     node.type === 'ExportDeclaration' ||
@@ -83,15 +83,15 @@ function checkModuleSyntax(node):boolean {
   }
 }
 
+// 检查生成器函数
 function checkGeneratorFunction(node):boolean {
-  // 检查生成器函数
   if (node.type === 'FunctionDeclaration' && node.generator) {
     return true
   }
 }
 
+// 辅助方法：检查await关键字
 function checkAsyncAwait(node):boolean {
-  // 辅助方法：检查await关键字
   function hasAwaitKeyword(node):boolean {
     if (!node.body) return false
     if (node.body.type === 'AwaitExpression') return true
@@ -99,8 +99,8 @@ function checkAsyncAwait(node):boolean {
       return node.body.body.some(hasAwaitKeyword)
     }
     return false
+    // 检查 async/await
   }
-  // 检查 async/await
   if ((node.type === 'FunctionDeclaration' && node.async) ||
     (node.type === 'FunctionExpression' && node.async) ||
     (node.type === 'ArrowFunctionExpression' && node.body.type === 'BlockStatement' && hasAwaitKeyword(node.body)) ||
@@ -110,15 +110,15 @@ function checkAsyncAwait(node):boolean {
   }
 }
 
+// 检查可计算的属性名
 function checkComputedPropertyName(node):boolean {
-  // 检查可计算的属性名
   if (node.type === 'Property' && node.computed) {
     return true
   }
 }
 
+// 检查模块化的动态导入
 function checkDynamicImport(node):boolean {
-  // 检查模块化的动态导入
   if (node.type === 'ImportExpression' ||
     (node.type === 'CallExpression' && node.callee && node.callee.name === 'import')
   ) {
@@ -126,58 +126,58 @@ function checkDynamicImport(node):boolean {
   }
 }
 
+// 检查默认导出语法
 function checkDefaultExportSyntax(node):boolean {
-  // 检查默认导出语法
   if (node.type === 'ExportDefaultDeclaration') {
     return true
   }
 }
 
+// 检查可选链操作符（Optional Chaining）
 function checkOptionalChaining(node):boolean {
-  // 检查可选链操作符（Optional Chaining）
   if (node.type === 'ChainExpression') {
     return true
   }
 }
 
+// 检查空值合并操作符（Nullish Coalescing）
 function checkNullishCoalescing(node):boolean {
-  // 检查空值合并操作符（Nullish Coalescing）
   if (node.type === 'BinaryExpression' && node.operator === '??') {
     return true
   }
 }
 
+// 检查类的私有字段语法
 function checkPrivateFieldSyntax(node):boolean {
-  // 检查类的私有字段语法
   if (node.type === 'ClassProperty' && node.key &&
     node.key.name && node.key.name.startsWith('#')) {
     return true
   }
 }
 
+// 检查BigInt数据类型
 function checkBigIntDataType(node):boolean {
-  // 检查BigInt数据类型
   if (node.type === 'Literal' && typeof node.value === 'bigint') {
     return true
   }
 }
 
+// 检查数值分隔符
 function checkNumericSeparator(node):boolean {
-  // 检查数值分隔符
   if (node.type === 'Literal' && node.raw && node.raw.includes('_')) {
     return true
   }
 }
 
+// 检查静态类方法
 function checkStaticClassMethod(node):boolean {
-  // 检查静态类方法
   if (node.type === 'MethodDefinition' && node.static) {
     return true
   }
 }
 
+// 检查Promise.allSettled(node):boolean
 function checkPromiseAllSettled(node):boolean {
-  // 检查Promise.allSettled(node):boolean
   if (
     node.type === 'CallExpression' &&
     node.callee &&
@@ -188,48 +188,48 @@ function checkPromiseAllSettled(node):boolean {
   }
 }
 
+// 检查数组的 flat(node):boolean、flatMap(node):boolean 方法
 function checkArrayFlatAndFlatMap(node):boolean {
-  // 检查数组的 flat(node):boolean、flatMap(node):boolean 方法
   if (
     node.type === 'CallExpression' &&
-    node.callee &&  // 确保 callee 属性存在
-    node.callee.property &&   // 确保 property 属性存在
+    node.callee &&
+    node.callee.property &&
     (node.callee.property.name === 'flat' || node.callee.property.name === 'flatMap')
   ) {
     return true
   }
 }
 
+// 检查字符串模板标签函数
 function checkTaggedTemplateExpression(node):boolean {
-  // 检查字符串模板标签函数
   if (node.type === 'TaggedTemplateExpression') {
     return true
   }
 }
 
+// 检查对象属性的简写语法
 function checkObjectPropertyShorthand(node):boolean {
-  // 检查对象属性的简写语法
   if (node.type === 'Property' && node.shorthand) {
     return true
   }
 }
 
+// 检查对象属性的计算属性名
 function checkObjectComputedPropertyName(node):boolean {
-  // 检查对象属性的计算属性名
   if (node.type === 'Property' && node.computed) {
     return true
   }
 }
 
+// 检查剩余参数（Rest parameters）
 function checkRestParameters(node):boolean {
-  // 检查剩余参数（Rest parameters）
   if (node.type === 'RestElement') {
     return true
   }
 }
 
+// 检查默认导出的命名空间导入
 function checkDefaultExportNamespaceImport(node):boolean {
-  // 检查默认导出的命名空间导入
   if (
     node.type === 'ImportSpecifier' &&
     node.imported &&
@@ -241,8 +241,8 @@ function checkDefaultExportNamespaceImport(node):boolean {
   }
 }
 
+// 检查尾调用优化
 function checkTailCallOptimization(node):boolean {
-  // 检查尾调用优化
   if (node.type === 'CallExpression' && node.arguments.length > 0) {
     const lastArgument = node.arguments[node.arguments.length - 1]
     if (
@@ -255,8 +255,8 @@ function checkTailCallOptimization(node):boolean {
   }
 }
 
+// 检查数组解构赋值的默认值
 function checkDefaultValueInArrayDestructuring(node):boolean {
-  // 检查数组解构赋值的默认值
   if (
     node.type === 'AssignmentPattern' &&
     node.left &&
@@ -268,8 +268,8 @@ function checkDefaultValueInArrayDestructuring(node):boolean {
   }
 }
 
+// 检查类的静态成员
 function checkStaticClassMembers(node):boolean {
-  // 检查类的静态成员
   if (
     (node.type === 'ClassProperty' && node.static) ||
     (node.type === 'MethodDefinition' && node.static)
@@ -278,15 +278,15 @@ function checkStaticClassMembers(node):boolean {
   }
 }
 
+// 检查可迭代对象（Iterable）
 function checkIterableObject(node):boolean {
-  // 检查可迭代对象（Iterable）
   if (node.type === 'ForOfStatement') {
     return true
   }
 }
 
+// 检查解构赋值的嵌套结构
 function checkNestedDestructuringAssignment(node):boolean {
-  // 检查解构赋值的嵌套结构
   if (node.type === 'ArrayPattern' || node.type === 'ObjectPattern') {
     if (
       node.elements && node.elements.some(element => element.type === 'ArrayPattern' || element.type === 'ObjectPattern')
@@ -296,8 +296,8 @@ function checkNestedDestructuringAssignment(node):boolean {
   }
 }
 
+// 检查类的扩展和继承语法
 function checkClassExtensionAndInheritanceSyntax(node):boolean {
-  // 检查类的扩展和继承语法
   if (
     node.type === 'ClassDeclaration' ||
     node.type === 'ClassExpression' ||
@@ -307,15 +307,15 @@ function checkClassExtensionAndInheritanceSyntax(node):boolean {
   }
 }
 
+// 检查对象字面量的简写语法
 function checkObjectLiteralShorthandSyntax(node):boolean {
-  // 检查对象字面量的简写语法
   if (node.type === 'ObjectExpression' && !node.properties.some(prop => prop.computed)) {
     return true
   }
 }
 
+// 检查 Set 和 Map 数据结构语法
 function checkSetAndMapDataStructureSyntax(node):boolean {
-  // 检查 Set 和 Map 数据结构语法
   if (
     node.type === 'NewExpression' &&
     node.callee &&
@@ -325,8 +325,8 @@ function checkSetAndMapDataStructureSyntax(node):boolean {
   }
 }
 
+// 检查可迭代协议（Iterable Protocol）
 function checkIterableProtocol(node):boolean {
-  // 检查可迭代协议（Iterable Protocol）
   if (
     node.type === 'ForOfStatement' ||
     (node.type === 'CallExpression' && node.callee && node.callee.name === 'Symbol.iterator')
@@ -335,15 +335,15 @@ function checkIterableProtocol(node):boolean {
   }
 }
 
+// 检查类的私有字段（Private Fields）语法
 function checkPrivateFieldsSyntax(node):boolean {
-  // 检查类的私有字段（Private Fields）语法
   if (node.type === 'PrivateIdentifier') {
     return true
   }
 }
 
+// 检查装饰器语法
 function checkDecoratorSyntax(node):boolean {
-  // 检查装饰器语法
   if (node.type === 'Decorator') {
     return true
   }
