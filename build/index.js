@@ -42,16 +42,18 @@ function main() {
     }
     else {
         // 获取相对路径
-        const relativePath = argv.p || argv.path || 'dist';
+        const relativePath = argv.p || argv.path || "dist";
         // 拼接绝对路径
         const folderPath = path.join(cwd, relativePath);
         // 运行主方法
-        (0, scanFolder_1.default)(folderPath);
+        const { result, errArray } = (0, scanFolder_1.default)(folderPath);
+        console.log("ES6 check result:", result);
+        console.log("ES6 check detail:", errArray);
     }
 }
 try {
     main();
 }
 catch (error) {
-    console.error('An error occurred in es6-check plugin:', error);
+    console.error("An error occurred in es6-check plugin:", error);
 }
